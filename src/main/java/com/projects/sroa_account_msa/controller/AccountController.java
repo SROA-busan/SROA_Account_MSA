@@ -30,27 +30,6 @@ public class AccountController {
         return accountService.createNewUser(userInfo);
     }
 
-//    // 엔지니어 회원가입
-//    @PostMapping("/account/engineer/singup")
-//    public boolean engineerSignup(@RequestBody SignupEngineer form) {
-//        if (!accountService.checkDuplicateEmp(form.getEmpNum())) {
-//            return false;
-//        }
-//
-////        if (!accountService.checkDuplicateId(form.getId())) {
-////            return false;
-////        }
-//        UserInfo userInfo = UserInfo.builder()
-//                .id(form.getId())
-//                .pw(form.getPw())
-//                .address(form.getAddress())
-//                .name(form.getName())
-//                .phoneNum(form.getPhoneNum())
-//                .build();
-//
-//        return accountService.createNewEngineer(userInfo, form.getCenterName(), form.getEmpNum());
-//    }
-
 
     // 고객, 엔지니어 로그인
     @GetMapping("/account/login/{ID}/{PW}")
@@ -59,4 +38,6 @@ public class AccountController {
         System.out.println(pw);
         return accountService.login(id, pw);
     }
+
+    //엔지니어 최초 로그인 후 정보 수정 요청
 }

@@ -63,26 +63,7 @@ public class AccountServiceImpl implements AccountService {
         return true;
     }
 
-//    @Override
-//    // 엔지니어의 회원가입
-//    public boolean createNewEngineer(UserInfo userInfo, String centerName, Long empNum) {
-//        userInfo.setCode(2);
-//        userInfoRepository.save(userInfo);
-//
-//        ServiceCenter serviceCenter = serviceCenterRepository.findByCenterName(centerName);
-//        EmployeeInfo employeeInfo = employeeInfoRepository.findByEmpNum(empNum);
-//
-//        EngineerInfo engineerInfo = EngineerInfo.builder()
-//                .employeeInfo(employeeInfo)
-//                .serviceCenter(serviceCenter)
-//                .userInfo(userInfo)
-//                .build();
-//
-//        engineerInfoRepository.save(engineerInfo);
-//        System.out.println("엔지니어 회원가입 : 성공");
-//
-//        return true;
-//    }
+
 
     @Override
     //고객 로그인
@@ -97,7 +78,7 @@ public class AccountServiceImpl implements AccountService {
         if (PW.equals(userInfo.getPw())) {
             System.out.println("로그인 : 성공");
             // 엔지니어 최초 로그인
-            if(userInfo.getCode()==2 && PW.equals("0000")){
+            if(userInfo.getCode()==2 && PW.equals("00000000")){
                 return 3;
             }
             return 0;

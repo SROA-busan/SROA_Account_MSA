@@ -27,8 +27,10 @@ public class AccountController {
     // 고객 회원가입
     @PostMapping("/account/customer/singup")
     public boolean userSignup(@RequestBody UserInfo userInfo) {
+        System.out.println("test");
         return accountService.createNewUser(userInfo);
     }
+
 
 
     // 고객, 엔지니어 로그인

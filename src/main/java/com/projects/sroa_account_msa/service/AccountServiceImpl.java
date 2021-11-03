@@ -57,7 +57,7 @@ public class AccountServiceImpl implements AccountService {
     @Override
     //고객의 회원가입
     public boolean createNewUser(UserInfo userInfo) {
-        userInfo.setCode(1);
+        userInfo.setCode(0);
         userInfoRepository.save(userInfo);
         System.out.println("고객 회원가입 : 회원가입 성공");
         return true;

@@ -31,8 +31,6 @@ public class AccountController {
         return accountService.createNewUser(userInfo);
     }
 
-
-
     // 고객, 엔지니어 로그인
     @GetMapping("/account/login/{ID}/{PW}")
     public Integer login(@PathVariable("ID") String id, @PathVariable("PW") String pw) {
@@ -41,5 +39,11 @@ public class AccountController {
         return accountService.login(id, pw);
     }
 
-    //엔지니어 최초 로그인 후 정보 수정 요청
+    //비밀번호 변경
+    @GetMapping("/account/settingPw/{ID}/{PW}")
+    public Boolean settingPw(@PathVariable("ID") String id,
+                             @PathVariable("PW") String pw){
+        accountService.setPw(id, pw);
+        return true;
+    }
 }

@@ -15,4 +15,8 @@ public interface AccountService {
 
 
     boolean isAvailableId(String id);
+
+    UserInfo findUserByID(String id);
+
+    void changePW(UserInfo user, String newPW);
 }

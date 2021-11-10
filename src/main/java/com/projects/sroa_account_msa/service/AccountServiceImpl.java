@@ -78,12 +78,22 @@ public class AccountServiceImpl implements AccountService {
         if (PW.equals(userInfo.getPw())) {
             System.out.println("로그인 : 성공");
             // 엔지니어 최초 로그인
-            if(userInfo.getCode()==2 && PW.equals("00000000")){
+            if(userInfo.getCode()==1 && PW.equals("00000000")){
                 return 3;
             }
             return 0;
         }
         System.out.println("로그인 : 비밀번호가 틀림");
         return 2;
+    }
+
+    @Override
+    public UserInfo findUserByID(String id) {
+        return userInfoRepository.findById(id);
+    }
+
+    @Override
+    public void changePW(UserInfo user, String newPW) {
+         userInfoRepository.changePW(user.getUserNum(), newPW);
     }
 }

@@ -40,4 +40,11 @@ public class AccountController {
     }
 
     //엔지니어 최초 로그인 후 정보 수정 요청
+    @GetMapping("/account/engineer/changePW/{ID}/{newPW}")
+    public boolean changePW(@PathVariable("ID") String ID, @PathVariable("newPW") String newPW){
+        UserInfo user = accountService.findUserByID(ID);
+        if(user.getCode()!=1)return false;
+        accountService.changePW(user, newPW);
+        return true;
+    }
 }

@@ -9,7 +9,7 @@ public interface AccountService {
 
     Integer login(String Id, String PW);
 
-//    boolean createNewEngineer(UserInfo userInfo, String centerName, Long empNum);
+
 
     boolean checkDuplicateEmp(Long empNum);
 

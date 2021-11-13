@@ -10,10 +10,11 @@ import javax.transaction.Transactional;
 public interface UserInfoRepository extends JpaRepository<UserInfo, Long> {
     boolean existsById(String userId);
 
+
     UserInfo findById(String id);
 
     @Transactional
     @Modifying
-    @Query("UPDATE UserInfo SET pw=?2 WHERE id=?1")
-    void updatePw(String id, String pw);
+    @Query("UPDATE UserInfo u SET u.pw=?2 WHERE u.userNum=?1")
+    void changePW(Long userNum, String newPW);
 }

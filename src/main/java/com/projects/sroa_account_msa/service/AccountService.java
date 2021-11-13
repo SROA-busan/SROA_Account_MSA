@@ -10,7 +10,13 @@ public interface AccountService {
     Integer login(String Id, String PW);
 
 
+
+    boolean checkDuplicateEmp(Long empNum);
+
+
     boolean isAvailableId(String id);
 
-    void setPw(String id, String pw);
+    UserInfo findUserByID(String id);
+
+    void changePW(UserInfo user, String newPW);
 }

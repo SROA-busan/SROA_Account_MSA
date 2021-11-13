@@ -33,9 +33,9 @@ public class AccountController {
     // 고객 회원가입
     @PostMapping("/account/customer/singup")
     public boolean userSignup(@RequestBody UserInfo userInfo) {
-        System.out.println("test");
         return accountService.createNewUser(userInfo);
     }
+
 
     // 고객, 엔지니어 로그인
     @GetMapping("/account/login/{ID}/{PW}")
@@ -45,11 +45,12 @@ public class AccountController {
         return accountService.login(id, pw);
     }
 
-    //비밀번호 변경
-    @GetMapping("/account/settingPw/{ID}/{PW}")
-    public Boolean settingPw(@PathVariable("ID") String id,
-                             @PathVariable("PW") String pw){
-        accountService.setPw(id, pw);
+    //엔지니어 최초 로그인 후 정보 수정 요청
+    @GetMapping("/account/engineer/changePW/{ID}/{newPW}")
+    public boolean changePW(@PathVariable("ID") String ID, @PathVariable("newPW") String newPW){
+        UserInfo user = accountService.findUserByID(ID);
+        if(user.getCode()!=1)return false;
+        accountService.changePW(user, newPW);
         return true;
     }
 }

@@ -17,8 +17,14 @@ public class AccountController {
         this.accountService = accountService;
     }
 
+
+    @GetMapping("/account/healthCheck")
+    public boolean healthCheck(){
+        return true;
+    }
+
     // 사용 가능한 ID -> true, 사용 불가(중복된 아이디) -> false
-    @GetMapping("account/duplicateCheck/{ID}")
+    @GetMapping("/account/duplicateCheck/{ID}")
     public boolean duplicateCheck(@PathVariable("ID") String id){
         return accountService.isAvailableId(id);
     }
